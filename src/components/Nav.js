@@ -10,7 +10,6 @@ const Nav = () => {
   const { search } = useSelector((state) => state.filter);
 
   const isMode = localStorage.getItem("highlightKey");
-  console.log(isMode);
 
   const [input, setInput] = useState(search);
 

@@ -27,7 +27,7 @@ const AddForm = () => {
   const handleSubmitBook = (e) => {
     e.preventDefault();
     dispatch(createBooks(formData));
-    console.log(formData);
+
     navigate("/");
   };
 
