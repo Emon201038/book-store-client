@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://emon-book-store.onrender.com/",
+  baseURL: "https://bookstore-emon.netlify.app/",
 });
 export default axiosInstance;
