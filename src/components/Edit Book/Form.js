@@ -95,7 +95,8 @@ const Form = () => {
       })
     );
     localStorage.clear();
-    navigate("/");
+    const editedMessage = "Book edited successfully";
+    navigate("/", { state: { editedMessage } });
   };
 
   //decide what to render

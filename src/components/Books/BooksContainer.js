@@ -17,7 +17,7 @@ const BooksContainer = () => {
     if (location.pathname === "/") {
       dispatch(getBooksThunk(searchValue));
     }
-  }, [dispatch, searchValue]);
+  }, [dispatch, searchValue, location.pathname]);
 
   const { isLoading, isError, error, books } = useSelector(
     (state) => state.getBooks

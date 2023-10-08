@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Head from "./components/Navigation/Head";
 import Home from "./components/Home/Home";
 import EditBook from "./components/Edit Book/EditBook";
 import AddBook from "./components/Add Book/AddBook";
+import Nav from "./components/Navigation/Nav";
 
 function App() {
   return (
     <Router>
-      <Head />
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/book/edit/:id" element={<EditBook />} />

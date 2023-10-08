@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { addBookThunk } from "../../features/Add Book/addBookSlice";
+import { getBooksThunk } from "../../features/Get Books and Delete/getBooksSlice";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -15,13 +16,21 @@ const Form = () => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { searchValue } = useSelector((state) => state.filter);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addBookThunk(formData));
     console.log(formData);
-    navigate("/");
+
+    const successMessage = "New book was added successfully";
+
+    navigate("/", { state: { successMessage } });
+    dispatch(getBooksThunk(searchValue));
   };
+  useEffect(() => {
+    dispatch(getBooksThunk(searchValue));
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

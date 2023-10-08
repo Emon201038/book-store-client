@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { deleteBookThunk } from "../../features/Get Books and Delete/getBooksSlice";
+import {
+  deleteBookThunk,
+  getBooksThunk,
+} from "../../features/Get Books and Delete/getBooksSlice";
 
 const SingleBook = ({ book }) => {
   const navigate = useNavigate();
@@ -44,7 +47,8 @@ const SingleBook = ({ book }) => {
     // ...
     dispatch(deleteBookThunk(id));
     setIsModalOpen(false);
-    console.log(id);
+    const deleteResponse = "Book deleted successfully";
+    navigate("/", { state: { deleteResponse } });
   };
 
   return (
@@ -107,18 +111,19 @@ const SingleBook = ({ book }) => {
           className="fixed inset-0 flex items-center justify-center bg-gray-950 bg-opacity-50"
           onClick={() => setIsModalOpen(false)}
         >
-          <div className="bg-white p-4 rounded-lg w-[500px] h-[200px] text-center shadow-2xl shadow-[black]">
-            <p className="mt-[50px] font-semibold">
-              Are you sure you want to delete this item?
+          <div className="bg-white p-4 pb-5 rounded-lg w-[500px] h-[200px] text-center shadow-2xl shadow-[black]">
+            <p className="mt-[10px]  font-semibold">
+              Are you sure you want to delete "{name}" book?
             </p>
             <p className="font-[100] text-sm">
-              (Are you sure to remove permanently?You cannot undo this....)
+              (Are you sure to remove permanently?You cannot undo if you click
+              confirm....)
             </p>
             <button
               onClick={(id) => handleDeleteConfirm(id)}
-              className="m-1 mt-4 p-1 rounded-lg bg-[red] w-[80px] text-white"
+              className="m-1 mt-2 p-1 rounded-lg bg-[red] w-[80px] text-white"
             >
-              Delete
+              Confirm
             </button>
             <button
               onClick={() => setIsModalOpen(false)}
