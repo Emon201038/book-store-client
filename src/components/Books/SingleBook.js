@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import {
-  deleteBookThunk,
-  getBooksThunk,
-} from "../../features/Get Books and Delete/getBooksSlice";
+import { deleteBookThunk } from "../../features/Get Books and Delete/getBooksSlice";
 
 const SingleBook = ({ book }) => {
   const navigate = useNavigate();
@@ -43,8 +40,6 @@ const SingleBook = ({ book }) => {
   };
 
   const handleDeleteConfirm = () => {
-    // Implement your delete logic here
-    // ...
     dispatch(deleteBookThunk(id));
     setIsModalOpen(false);
     const deleteResponse = "Book deleted successfully";

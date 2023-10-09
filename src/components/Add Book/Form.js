@@ -21,7 +21,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addBookThunk(formData));
-    console.log(formData);
 
     const successMessage = "New book was added successfully";
 

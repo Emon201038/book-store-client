@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleBookThunk } from "../../features/Get Single Book/getSingleBookSlice";
 import { editBookThunk } from "../../features/Edit Book/editBookSlice";
 import Error from "../ui/Error";
+import { getBooksThunk } from "../../features/Get Books and Delete/getBooksSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const Form = () => {
   const { book, isLoading, isError, error } = useSelector(
     (state) => state.getSingleBook
   );
+
+  const { searchValue } = useSelector((state) => state.filter);
+
   useEffect(() => {
     localStorage.setItem(
       `bookInfo`,
@@ -97,6 +101,7 @@ const Form = () => {
     localStorage.clear();
     const editedMessage = "Book edited successfully";
     navigate("/", { state: { editedMessage } });
+    dispatch(getBooksThunk(searchValue));
   };
 
   //decide what to render

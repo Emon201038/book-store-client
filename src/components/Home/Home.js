@@ -59,7 +59,6 @@ const Home = () => {
       };
     }
   }, [deleteMessage, successMessage, editedMessage]);
-  console.log("State", state);
 
   return (
     <main className="py-12 2xl:px-6">
@@ -86,30 +85,6 @@ const Home = () => {
               </h3>
             </div>
           )}
-          {/* {displayMessage && (
-            <div className="w-full  flex justify-center items-center">
-              <h3
-                className={`${
-                  deleteMessage &&
-                  "w-full flex justify-center items-center bg-red-700 text-white font-semibold py-2 mb-3"
-                } `}
-              >
-                {deleteMessage}
-              </h3>
-            </div>
-          )}
-          {displayMessage && (
-            <div className="w-full  flex justify-center items-center">
-              <h3
-                className={`${
-                  editedMessage &&
-                  "w-full flex justify-center items-center bg-green-700 text-white font-semibold py-2 mb-3"
-                }`}
-              >
-                {editedMessage}
-              </h3>
-            </div>
-          )} */}
 
           <BooksContainer />
         </div>
