@@ -10,8 +10,6 @@
 
 # production
 /build
-tailwind.config.js
-postcss.config.js
 /.firebase
 
 # misc
