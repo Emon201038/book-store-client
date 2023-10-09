@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getSingleBookThunk } from "../../features/Get Single Book/getSingleBookSlice";
@@ -48,28 +48,11 @@ const Form = () => {
     }
   }, [book]);
 
-  const {
-    name: initialName,
-    author: initialAuthor,
-    thumbnail: initialThumbnail,
-    price: initialPrice,
-    rating: initialRating,
-    featured: initialFeatured,
-  } = book;
-
   const [formData, setFormData] = useState(() => {
     const storedFormData = localStorage.getItem(`bookInfo`);
     if (storedFormData) {
       return JSON.parse(storedFormData);
     }
-    // return {
-    //   name: initialName,
-    //   author: initialAuthor,
-    //   thumbnail: initialThumbnail,
-    //   price: initialPrice,
-    //   rating: initialRating,
-    //   featured: initialFeatured,
-    // };
   });
   const { name, author, thumbnail, price, rating, featured } = formData || {};
 
